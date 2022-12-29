@@ -14,29 +14,55 @@ export const Detalle = () => {
     setData(respuesta.data);
   };
 
-  console.log(data);
+  const genresColor = (genre) => {
+    switch (genre.name.toLowerCase()) {
+      case "aventura":
+        return "bg-green-400";
+      case "familia":
+        return "bg-pink-300";
+      case "fantasía":
+        return "bg-blue-400";
+      case "ciencia ficción":
+        return "bg-purple-400";
+      case "acción":
+        return "bg-red-500";
+      case "comedia":
+        return "bg-yellow-400";
+      case "crimen":
+        return "bg-rose-900";
+      case "suspense":
+        return "bg-gray-600";
+      default:
+        return "bg-orange-200";
+    }
+  };
 
   useEffect(() => {
     detallePeli();
   }, [id]);
+
   return (
-    <div className="flex items-center flex-col">
+    <div className="flex items-center flex-col w-full overflow-x-hidden">
       <h1 className="text-4xl my-10 ">🎞 Detalle pelis 🎞</h1>
-      <div className="bg-slate-700 flex flex-col xl:flex-row rounded-lg items-center relative">
+      <div className="bg-slate-700 flex flex-col xl:flex-row bg- rounded-lg items-center relative">
         <div className="rounded-md">
           <img
-            className="w-full h-full xl:max-h-[550px] rounded-lg"
+            className="w-full h-screen xl:max-h-[550px] rounded-lg"
             src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
             alt={data.original_title}
           />
         </div>
-        <div className="flex flex-col p-14 gap-8 absolute rounded-lg overflow-y-scroll scrollbar bg-black/80 h-full xl:bg-transparent xl:relative">
+        <div className="flex flex-col p-14 w-full gap-8 absolute rounded-lg overflow-y-scroll scrollbar bg-black/80 h-full xl:bg-transparent xl:relative">
           <h1 className="text-4xl font-bold text-gray-300">
             {data.original_title}
           </h1>
-          <div className="flex gap-6">
+          <div className="flex gap-6 flex-wrap">
             {data.genres?.map((genre) => (
-              <h3 className="text-lg bg-orange-200 rounded-xl px-4">
+              <h3
+                className={`text-lg flex items-center ${genresColor(
+                  genre
+                )} font-bold rounded-xl px-4`}
+              >
                 {genre.name}
               </h3>
             ))}
