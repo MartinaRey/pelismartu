@@ -15,7 +15,7 @@ export const Login = ({ setToken }) => {
 
     if (email === "martu" && password === "1234") {
       localStorage.setItem("martu", "aqiuehqiwuehqiwuehaksjdba21312kjaqbnsd");
-      toast("ingresaste correctamente");
+      toast("🐧 Todo piola, pasa tranquilo");
       setToken(true);
       navigate("/listado");
       return;
@@ -51,7 +51,6 @@ export const Login = ({ setToken }) => {
       toast("email o contraseña incorrecta");
       return;
     }
-    console.log("estamos listos");
     axios
       .post("http://challenge-react.alkemy.org", { email, password })
       .then((respuesta) => {

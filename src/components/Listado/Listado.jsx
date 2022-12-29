@@ -16,10 +16,9 @@ export const Listado = () => {
     peli();
   }, []);
   const formatoFecha = (fecha) => {
-    console.log(fecha);
     let today = new Date(fecha);
     let options = { day: "numeric", month: "short", year: "numeric" };
-    console.log();
+
     return today.toLocaleDateString("es-ES", options);
   };
 

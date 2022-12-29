@@ -4,13 +4,16 @@ import { Link, useParams } from "react-router-dom";
 import "./Detalle.css";
 
 export const Detalle = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
+  const [viewMore, setViewMore] = useState(false);
   const { id } = useParams();
 
   const detallePeli = async () => {
     const respuesta = await axios.get(
       `https://api.themoviedb.org/3/movie/${id}?api_key=b53d5673ee3ec47f7f63e8252d9d0924&language=es-ES`
     );
+
+    console.log(respuesta);
     setData(respuesta.data);
   };
 
@@ -39,7 +42,7 @@ export const Detalle = () => {
 
   useEffect(() => {
     detallePeli();
-  }, [id]);
+  }, []);
 
   return (
     <div className="flex items-center flex-col w-full overflow-x-hidden">
@@ -68,7 +71,26 @@ export const Detalle = () => {
             ))}
           </div>
           <p className="max-w-2xl md:max-w-3xl text-xl text-orange-100">
-            {data.overview}
+            {!viewMore && data?.overview?.length > 300 ? (
+              <>
+                {`${data.overview.substring(0, 300)}...`}{" "}
+                <button className="mt-5" onClick={() => setViewMore(!viewMore)}>
+                  {!viewMore ? "Ver más" : "Ver menos"}
+                </button>
+              </>
+            ) : (
+              <div className="flex flex-col">
+                {data?.overview}
+                {data?.overview?.length > 300 && (
+                  <button
+                    className="mt-5"
+                    onClick={() => setViewMore(!viewMore)}
+                  >
+                    {!viewMore ? "Ver más" : "Ver menos"}
+                  </button>
+                )}
+              </div>
+            )}
           </p>
           <span className=" text-orange-100">
             🍅{data.vote_average?.toFixed(1)}
