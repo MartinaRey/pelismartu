@@ -44,15 +44,15 @@ export const Detalle = () => {
   return (
     <div className="flex items-center flex-col w-full overflow-x-hidden">
       <h1 className="text-4xl my-10 ">🎞 Detalle pelis 🎞</h1>
-      <div className="bg-slate-700 flex flex-col xl:flex-row bg- rounded-lg items-center relative">
+      <div className="bg-slate-700 mx-5 flex flex-col xl:flex-row bg- rounded-lg items-center relative">
         <div className="rounded-md">
           <img
-            className="w-full h-screen xl:max-h-[550px] rounded-lg"
+            className="w-full object-cover h-screen xl:max-h-[550px] rounded-lg"
             src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
             alt={data.original_title}
           />
         </div>
-        <div className="flex flex-col p-14 w-full gap-8 absolute rounded-lg overflow-y-scroll scrollbar bg-black/80 h-full xl:bg-transparent xl:relative">
+        <div className="flex flex-col p-5 md:p-14 w-full gap-8 absolute rounded-lg overflow-y-scroll scrollbar bg-black/80 h-full xl:bg-transparent xl:relative">
           <h1 className="text-4xl font-bold text-gray-300">
             {data.original_title}
           </h1>
