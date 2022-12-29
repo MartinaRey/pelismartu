@@ -1,0 +1,36 @@
+.form-estilos {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  font-weight: 900;  
+}
+
+.form-estilos label {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-estilos input {
+  background-color: aliceblue;
+  border-radius: 5px;
+}
+  
+.fondo {
+  background-color: rgb(43, 226, 211);
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  padding: 30px;
+  border-radius: 10px;
+  }
+
+  .button {
+    margin-top: 10px;
+    border-radius: 5px;
+    border-color: blueviolet;
+    background-color: blue;
+    color: bisque;
+    font-size: 20px;
+    font-weight: 600;
+  }
